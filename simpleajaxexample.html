@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>AJAX Simple Example</title>
+</head>
+
+<body>
+    <span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
+  Make a request
+</span>
+    <script type="text/javascript">
+        (function () {
+            var httpRequest;
+            document.getElementById("ajaxButton").onclick = function () {
+                //makeRequest('test.html');
+                makeRequest('test.xml');
+            };
+
+            function makeRequest(url) {
+                httpRequest = new XMLHttpRequest();
+                
+                /*
+                httpRequest.responseType("json") default is text
+                */
+
+                if (!httpRequest) {
+                    alert('Giving up :( Cannot create an XMLHTTP instance');
+                    return false;
+                }
+                /*
+                    GET is simpler and faster than POST, and can be used in most cases.
+                    However, always use POST requests when:
+                    •A cached file is not an option (update a file or database on the server)
+                    •Sending a large amount of data to the server (POST has no size limitations)
+                    •Sending user input (which can contain unknown characters), POST is more robust and secure than GET
+                */
+                httpRequest.onreadystatechange = alertContents;
+                httpRequest.open('GET', url);
+                httpRequest.send();
+            }
+
+            var OK = 200
+
+            function alertContents() {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status === OK) {
+                        //alert(httpRequest.responseText);
+                        var xmldoc = httpRequest.responseXML;
+                        var root_node = xmldoc.getElementsByTagName('root').item(0);
+                        alert(root_node.firstChild.data);
+                    } else {
+                        alert('There was a problem with the request.');
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
