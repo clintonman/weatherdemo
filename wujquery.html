@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WU jQuery Sample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        jQuery(document).ready(function($) {
+            $.ajax({
+                url: "http://api.wunderground.com/api/xxx my key here xxx/geolookup/conditions/q/CA/Trabuco.json",
+                dataType: "jsonp",
+
+                success: function(parsed_json) {
+                    var location = parsed_json['location']['city'];
+                    var temp_f = parsed_json['current_observation']['temp_f'];
+                    alert("Current temperature in " + location + " is: " + temp_f);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

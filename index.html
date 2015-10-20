@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Data Dev</title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <div id="id01"></div>
+
+    <script>
+        var url = "sampleforcast.txt";
+
+        $.get(url, function( data ) {
+            //console.log(data);
+            var ddata = JSON.parse(data);
+            //var ddata = data;
+            //var ddata = JSON.parse('{"able":"yes"}')
+            //console.log(ddata);
+            //document.getElementById("id01").innerHTML = ddata;
+            //myFunction(JSON.parse(data));
+            //document.getElementById("id01").innerHTML = ddata.response.version;
+            //myFunction2(ddata.hourly_forecast);
+            //myFunction(ddata.hourly_forecast);
+            //myFunction3(ddata.hourly_forecast);
+            myFunction4(ddata.hourly_forecast);
+        });
+        
+        function myFunction4(arr) {
+            var out = "";
+            var i;
+            for(i in arr) {
+                out += 'temperature = '+arr[i].temp["english"]+ ', hour = ' + arr[i].FCTTIME.hour + '<br>';
+            }
+            document.getElementById("id01").innerHTML = out;
+        }
+        
+        function myFunction3(arr) {
+            var out = "";
+            var i;
+            var larr = arr[0];
+            /*for(i in larr) {
+                out += i +':'+larr[i]+ '<br>';
+            }*/
+            var tempobj = larr.temp;
+            for(i in tempobj) {
+                out += i +':'+tempobj[i]+ '<br>';
+            }
+            out += "temperature in farenheight is " + tempobj["english"];
+            document.getElementById("id01").innerHTML = out;
+        }
+        
+        function myFunction2(myobj) {
+            var out = "";
+            var i;
+            for(i in myobj) {
+                out += i +':'+myobj[i]+ '<br>'
+            }
+            document.getElementById("id01").innerHTML = out;
+        }
+
+        function myFunction(arr) {
+            var out = "";
+            var i;
+            for (i = 0; i < arr.length; i++) {
+                out += arr[i] + '<br>';
+            }
+            document.getElementById("id01").innerHTML = out;
+        }
+    </script>
+</body>
+</html>
