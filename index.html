@@ -6,10 +6,20 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
+   <svg>
+       <rect x="0" y="0" width="100" height="100" rx="5" ry="10" fill="none" stroke="red"/>
+   </svg>
+   <svg>
+       <polyline id="testline" stroke="blue" fill="none"/>
+   </svg>
+   <svg>
+       <polyline id="templine" stroke="blue" fill="none"/>
+   </svg>
     <div id="id01"></div>
 
     <script>
         var url = "sampleforcast.txt";
+        var tempdata = "";
 
         $.get(url, function( data ) {
             //console.log(data);
@@ -24,7 +34,22 @@
             //myFunction(ddata.hourly_forecast);
             //myFunction3(ddata.hourly_forecast);
             myFunction4(ddata.hourly_forecast);
+            
+            $("#testline").attr("points", "20,100 40,60 70,80 100,20");
+            
+            tempdata = getTemperaturePoints(ddata.hourly_forecast);
+            console.log(tempdata);
+            $("#templine").attr("points", tempdata);
         });
+        
+        function getTemperaturePoints(arr) {
+            var graphpoints = "";
+            var i;
+            for(i in arr) {
+                graphpoints += i*5 +',' +arr[i].temp["english"]*2 + ' ';
+            }
+            return graphpoints;
+        }
         
         function myFunction4(arr) {
             var out = "";
