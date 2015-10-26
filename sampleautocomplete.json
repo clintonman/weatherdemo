@@ -1,0 +1,223 @@
+{
+    "RESULTS": [{
+        "name": "Rancho Cucamonga, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "91701.2.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:91701.2.99999",
+        "ll": "34.155540 -117.589737",
+        "lat": "34.155540",
+        "lon": "-117.589737"
+    }, {
+        "name": "Rancho Cordova, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "95670.1.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:95670.1.99999",
+        "ll": "38.603519 -121.248062",
+        "lat": "38.603519",
+        "lon": "-121.248062"
+    }, {
+        "name": "Rancho Santa Margarita, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92688.1.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:92688.1.99999",
+        "ll": "33.633362 -117.602219",
+        "lat": "33.633362",
+        "lon": "-117.602219"
+    }, {
+        "name": "Rancho Palos Verdes, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "90275.1.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:90275.1.99999",
+        "ll": "33.744419 -118.386124",
+        "lat": "33.744419",
+        "lon": "-118.386124"
+    }, {
+        "name": "Rancho San Diego, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "91978.2.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:91978.2.99999",
+        "ll": "32.702702 -116.937927",
+        "lat": "32.702702",
+        "lon": "-116.937927"
+    }, {
+        "name": "Rancho Mirage, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92270.1.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:92270.1.99999",
+        "ll": "33.763645 -116.423813",
+        "lat": "33.763645",
+        "lon": "-116.423813"
+    }, {
+        "name": "Rancho Murieta, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "95683.1.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:95683.1.99999",
+        "ll": "38.496181 -121.127281",
+        "lat": "38.496181",
+        "lon": "-121.127281"
+    }, {
+        "name": "Rancho Veloz, Cuba",
+        "type": "city",
+        "c": "CU",
+        "zmw": "00000.4.78338",
+        "tz": "America/Havana",
+        "tzs": "CDT",
+        "l": "/q/zmw:00000.4.78338",
+        "ll": "22.880556 -80.391670",
+        "lat": "22.880556",
+        "lon": "-80.391670"
+    }, {
+        "name": "Rancho Santa Fe, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92067.1.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:92067.1.99999",
+        "ll": "33.006901 -117.206703",
+        "lat": "33.006901",
+        "lon": "-117.206703"
+    }, {
+        "name": "Ranchos De Taos, New Mexico",
+        "type": "city",
+        "c": "US",
+        "zmw": "87557.1.99999",
+        "tz": "America/Denver",
+        "tzs": "MDT",
+        "l": "/q/zmw:87557.1.99999",
+        "ll": "36.307381 -105.613617",
+        "lat": "36.307381",
+        "lon": "-105.613617"
+    }, {
+        "name": "Rancho Viejo, Texas",
+        "type": "city",
+        "c": "US",
+        "zmw": "78575.2.99999",
+        "tz": "America/Chicago",
+        "tzs": "CDT",
+        "l": "/q/zmw:78575.2.99999",
+        "ll": "26.021280 -97.533783",
+        "lat": "26.021280",
+        "lon": "-97.533783"
+    }, {
+        "name": "Rancho Belago, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92555.2.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:92555.2.99999",
+        "ll": "33.915405 -117.166351",
+        "lat": "33.915405",
+        "lon": "-117.166351"
+    }, {
+        "name": "Rancho Bernardo, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92128.2.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:92128.2.99999",
+        "ll": "33.009991 -117.072899",
+        "lat": "33.009991",
+        "lon": "-117.072899"
+    }, {
+        "name": "Rancho Blanco, Texas",
+        "type": "city",
+        "c": "US",
+        "zmw": "78046.4.99999",
+        "tz": "America/Chicago",
+        "tzs": "CDT",
+        "l": "/q/zmw:78046.4.99999",
+        "ll": "27.308636 -99.481430",
+        "lat": "27.308636",
+        "lon": "-99.481430"
+    }, {
+        "name": "Rancho Buena Vista, Texas",
+        "type": "city",
+        "c": "US",
+        "zmw": "78578.8.99999",
+        "tz": "America/Chicago",
+        "tzs": "CDT",
+        "l": "/q/zmw:78578.8.99999",
+        "ll": "26.251184 -97.300804",
+        "lat": "26.251184",
+        "lon": "-97.300804"
+    }, {
+        "name": "Rancho California, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92591.2.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:92591.2.99999",
+        "ll": "33.530987 -117.103394",
+        "lat": "33.530987",
+        "lon": "-117.103394"
+    }, {
+        "name": "Rancho De Aereo, Colorado",
+        "type": "city",
+        "c": "US",
+        "zmw": "80542.6.99999",
+        "tz": "America/Denver",
+        "tzs": "MDT",
+        "l": "/q/zmw:80542.6.99999",
+        "ll": "40.214981 -104.984428",
+        "lat": "40.214981",
+        "lon": "-104.984428"
+    }, {
+        "name": "Rancho Del Cielo, Texas",
+        "type": "city",
+        "c": "US",
+        "zmw": "79855.8.99999",
+        "tz": "America/Chicago",
+        "tzs": "CDT",
+        "l": "/q/zmw:79855.8.99999",
+        "ll": "31.015278 -104.212410",
+        "lat": "31.015278",
+        "lon": "-104.212410"
+    }, {
+        "name": "Rancho Del Lago, Texas",
+        "type": "city",
+        "c": "US",
+        "zmw": "78133.7.99999",
+        "tz": "America/Chicago",
+        "tzs": "CDT",
+        "l": "/q/zmw:78133.7.99999",
+        "ll": "29.951881 -98.224457",
+        "lat": "29.951881",
+        "lon": "-98.224457"
+    }, {
+        "name": "Rancho Del Rey, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "91910.3.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:91910.3.99999",
+        "ll": "32.624874 -117.014313",
+        "lat": "32.624874",
+        "lon": "-117.014313"
+    }]
+}

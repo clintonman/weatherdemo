@@ -1,0 +1,94 @@
+
+{
+  "response": {
+  "version":"0.1",
+  "termsofService":"http://www.wunderground.com/weather/api/d/terms.html",
+  "features": {
+  "conditions": 1
+  }
+	}
+  ,	"current_observation": {
+		"image": {
+		"url":"http://icons.wxug.com/graphics/wu2/logo_130x80.png",
+		"title":"Weather Underground",
+		"link":"http://www.wunderground.com"
+		},
+		"display_location": {
+		"full":"Trabuco, CA",
+		"city":"Trabuco",
+		"state":"CA",
+		"state_name":"California",
+		"country":"US",
+		"country_iso3166":"US",
+		"zip":"92679",
+		"magic":"1",
+		"wmo":"99999",
+		"latitude":"33.63132095",
+		"longitude":"-117.58979797",
+		"elevation":"340.00000000"
+		},
+		"observation_location": {
+		"full":"Saddle Back Valley, Rancho Santa Margarita, California",
+		"city":"Saddle Back Valley, Rancho Santa Margarita",
+		"state":"California",
+		"country":"US",
+		"country_iso3166":"US",
+		"latitude":"33.648403",
+		"longitude":"-117.593147",
+		"elevation":"1109 ft"
+		},
+		"estimated": {
+		},
+		"station_id":"KCARANCH18",
+		"observation_time":"Last Updated on October 26, 1:30 PM PDT",
+		"observation_time_rfc822":"Mon, 26 Oct 2015 13:30:15 -0700",
+		"observation_epoch":"1445891415",
+		"local_time_rfc822":"Mon, 26 Oct 2015 13:30:30 -0700",
+		"local_epoch":"1445891430",
+		"local_tz_short":"PDT",
+		"local_tz_long":"America/Los_Angeles",
+		"local_tz_offset":"-0700",
+		"weather":"Clear",
+		"temperature_string":"88.0 F (31.1 C)",
+		"temp_f":88.0,
+		"temp_c":31.1,
+		"relative_humidity":"28%",
+		"wind_string":"From the West at 2.0 MPH Gusting to 9.0 MPH",
+		"wind_dir":"West",
+		"wind_degrees":273,
+		"wind_mph":2.0,
+		"wind_gust_mph":"9.0",
+		"wind_kph":3.2,
+		"wind_gust_kph":"14.5",
+		"pressure_mb":"1012",
+		"pressure_in":"29.90",
+		"pressure_trend":"-",
+		"dewpoint_string":"51 F (10 C)",
+		"dewpoint_f":51,
+		"dewpoint_c":10,
+		"heat_index_string":"85 F (30 C)",
+		"heat_index_f":85,
+		"heat_index_c":30,
+		"windchill_string":"NA",
+		"windchill_f":"NA",
+		"windchill_c":"NA",
+		"feelslike_string":"85 F (30 C)",
+		"feelslike_f":"85",
+		"feelslike_c":"30",
+		"visibility_mi":"10.0",
+		"visibility_km":"16.1",
+		"solarradiation":"--",
+		"UV":"6","precip_1hr_string":"0.00 in ( 0 mm)",
+		"precip_1hr_in":"0.00",
+		"precip_1hr_metric":" 0",
+		"precip_today_string":"0.00 in (0 mm)",
+		"precip_today_in":"0.00",
+		"precip_today_metric":"0",
+		"icon":"clear",
+		"icon_url":"http://icons.wxug.com/i/c/k/clear.gif",
+		"forecast_url":"http://www.wunderground.com/US/CA/Trabuco.html",
+		"history_url":"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KCARANCH18",
+		"ob_url":"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=33.648403,-117.593147",
+		"nowcast":""
+	}
+}

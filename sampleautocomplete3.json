@@ -1,0 +1,115 @@
+{
+    "RESULTS": [{
+        "name": "Trabuco Canyon, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92678.1.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:92678.1.99999",
+        "ll": "33.664890 -117.590538",
+        "lat": "33.664890",
+        "lon": "-117.590538"
+    }, {
+        "name": "Trabuco, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92679.1.99999",
+        "tz": "America/Los_Angeles",
+        "tzs": "PDT",
+        "l": "/q/zmw:92679.1.99999",
+        "ll": "33.631321 -117.589798",
+        "lat": "33.631321",
+        "lon": "-117.589798"
+    }, {
+        "name": "Trabuco Elementary School, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92679.1.99999",
+        "tz": "US4",
+        "l": "/q/locid:9267805316;loctype:17",
+        "ll": "33.660000 -117.589996",
+        "lat": "33.660000",
+        "lon": "-117.589996"
+    }, {
+        "name": "Trabuco Highland Central Park, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92679.1.99999",
+        "tz": "US4",
+        "l": "/q/locid:13866;loctype:19",
+        "ll": "33.660000 -117.559998",
+        "lat": "33.660000",
+        "lon": "-117.559998"
+    }, {
+        "name": "Trabuco Highlands, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92679.1.99999",
+        "tz": "US4",
+        "l": "/q/locid:USCA9366;loctype:1",
+        "ll": "33.610001 -117.570000",
+        "lat": "33.610001",
+        "lon": "-117.570000"
+    }, {
+        "name": "Trabuco Hills High School, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92691.1.99999",
+        "tz": "US4",
+        "l": "/q/locid:9269108957;loctype:17",
+        "ll": "33.660000 -117.650002",
+        "lat": "33.660000",
+        "lon": "-117.650002"
+    }, {
+        "name": "Trabuco Mesa Elementary School, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92679.1.99999",
+        "tz": "US4",
+        "l": "/q/locid:9268809186;loctype:17",
+        "ll": "33.660000 -117.580002",
+        "lat": "33.660000",
+        "lon": "-117.580002"
+    }, {
+        "name": "Trabuco Mesa Park, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92688.1.99999",
+        "tz": "US4",
+        "l": "/q/locid:13867;loctype:19",
+        "ll": "33.660000 -117.580002",
+        "lat": "33.660000",
+        "lon": "-117.580002"
+    }, {
+        "name": "Trabuco Ranger District - Cleveland NF, California",
+        "type": "city",
+        "c": "US",
+        "zmw": "92882.1.99999",
+        "tz": "US4",
+        "l": "/q/locid:050203;loctype:13",
+        "ll": "33.869999 -117.570000",
+        "lat": "33.869999",
+        "lon": "-117.570000"
+    }, {
+        "name": "Trabuco, Cuba",
+        "type": "city",
+        "c": "CU",
+        "zmw": "00000.1.78350",
+        "tz": "CU1",
+        "l": "/q/locid:CUXX0814;loctype:1",
+        "ll": "21.500000 -78.400002",
+        "lat": "21.500000",
+        "lon": "-78.400002"
+    }, {
+        "name": "Trabuco, VE",
+        "type": "city",
+        "c": "VE",
+        "zmw": "00000.1.80432",
+        "tz": "VE1",
+        "l": "/q/locid:VEXX1002;loctype:1",
+        "ll": "9.530000 -66.930000",
+        "lat": "9.530000",
+        "lon": "-66.930000"
+    }]
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="weatherApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Weather</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="scripts/weatherapp.js"></script>
+</head>
+
+<body >
+    <div class="jumbotron">
+        <h1>Weather Application</h1>
+        <p>1st app compare temperature forecast in 2 locations</p>
+    </div>
+
+    <input type="text" class="form-control" placeholder="Search 1">
+    <input type="text" class="form-control" placeholder="Search 2">
+    <h3>city1</h3>
+    <ul>
+        <li>high1</li>
+        <li>low1</li>
+        <li>current1</li>
+    </ul>
+    <h3>city2</h3>
+    <ul>
+        <li>high2</li>
+        <li>low2</li>
+        <li>current2</li>
+    </ul>
+    <div style="width:400px;height:300px;background-color:red"></div>
+    <div style="width:400px;height:300px;background-color:blue"></div>
+
+
+</body>
+
+</html>
