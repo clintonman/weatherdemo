@@ -27,13 +27,14 @@
         <p>{{ wdata.section }}</p>
     </div>
 
-    <input ng-model="wdata.search1" ng-change="wdata.updatesearch(1)" type="text" class="form-control" placeholder="Search 1">
+    <input ng-model="wdata.searches[0].search" ng-change="wdata.updatesearch(0)" type="text" class="form-control" placeholder="Search 1">
+    <div>{{wdata.searches[0].search}}</div>
     <ul>
-        <li ng-repeat="thename in wdata.searchresult1">{{thename.name}}</li>
+        <li ng-repeat="thename in wdata.searches[0].searchresult">{{thename.name}}</li>
     </ul>
-    <input ng-model="wdata.search2" ng-change="wdata.updatesearch(2)" type="text" class="form-control" placeholder="Search 2">
+    <input ng-model="wdata.searches[1].search" ng-change="wdata.updatesearch(1)" type="text" class="form-control" placeholder="Search 2">
     <ul>
-        <li ng-repeat="thename in wdata.searchresult2">{{thename.name}}</li>
+        <li ng-repeat="thename in wdata.searches[1].searchresult">{{thename.name}}</li>
     </ul>
     <h3>city1</h3>
     <ul>
