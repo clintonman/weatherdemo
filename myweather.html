@@ -28,7 +28,6 @@
     </div>
 
     <input ng-model="wdata.searches[0].search" ng-change="wdata.updatesearch(0)" type="text" class="form-control" placeholder="Search 1">
-    <div>{{wdata.searches[0].search}}</div>
     <ul>
         <li ng-repeat="thename in wdata.searches[0].searchresult">{{thename.name}}</li>
     </ul>

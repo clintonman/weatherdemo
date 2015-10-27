@@ -1,50 +1,48 @@
 var myApp = angular.module('weatherApp', []);
 
-myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList", function ($scope, $http, getCityList) {
+myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList", function($scope, $http, getCityList) {
     this.section = "first section";
-    this.searchresult1 = [];
-    this.searches = [{"search":"",
-                      "searchresult":[]
+    this.searches = [{
+            "search": "",
+            "searchresult": []
                      },
-                    {"search":"",
-                     "searchresult":[]
-                    }];
+        {
+            "search": "",
+            "searchresult": []
+        }];
 
-    self = this;
-
-    this.updatesearch = function (index) {
-        var searchfield = this.searches[index].search;
-
-        if(searchfield && searchfield.length > 2) {
-            getCityList.getem(searchfield, index);
-        }
-        else {
-            this.searches[index].searchresult = [];
-        }
+    this.updatesearch = function(index) {
+        getCityList.getem(this, index);
     };
 
 }]);
 
-myApp.service("getCityList", ["$http", function($http, searchfield){
-    this.getem = function(searchfield, index) {
-        
-        var myurl = "http://autocomplete.wunderground.com/aq?cb=JSON_CALLBACK&query=" + searchfield ;
+myApp.service("getCityList", ["$http", function($http) {
+    this.getem = function(self, index) {
+
+        var searchfield = self.searches[index].search;
+
+        if (!searchfield || searchfield.length < 3) {
+            self.searches[index].searchresult = [];
+            return;
+        }
+
+        var myurl = "http://autocomplete.wunderground.com/aq?cb=JSON_CALLBACK&query=" + searchfield;
 
         var myhttp = $http({
-                "method": "JSONP",
-                "url": myurl
-            })
+            "method": "JSONP",
+            "url": myurl
+        })
 
         return myhttp.then(function(response) {
-                    if(response.status == 200) {
-                       self.searches[index].searchresult = response.data.RESULTS;
-                    }
-                },
-               function (response) {
-                    self.searches[index].searchresult = ["some error"];
-                });
-        
+                if (response.status == 200) {
+                    self.searches[index].searchresult = response.data.RESULTS;
+                }
+            },
+            function(response) {
+                self.searches[index].searchresult = ["some error"];
+            });
+
     };
-    
-    
+
 }]);
