@@ -29,19 +29,23 @@
 
     <input ng-model="wdata.searches[0].search" ng-change="wdata.updatesearch(0)" type="text" class="form-control" placeholder="Search 1">
     <ul>
-        <li ng-repeat="thename in wdata.searches[0].searchresult">{{thename.name}}</li>
+        <li ng-repeat="thename in wdata.searches[0].searchresult">
+            <button ng-click="wdata.setcity(0, $index, thename.name)">{{thename.name}}</button>
+        </li>
     </ul>
     <input ng-model="wdata.searches[1].search" ng-change="wdata.updatesearch(1)" type="text" class="form-control" placeholder="Search 2">
     <ul>
-        <li ng-repeat="thename in wdata.searches[1].searchresult">{{thename.name}}</li>
+        <li ng-repeat="thename in wdata.searches[1].searchresult">
+            <button ng-click="wdata.setcity(1, $index, thename.name)">{{thename.name}}</button>
+        </li>
     </ul>
-    <h3>city1</h3>
+    <h3>{{wdata.currentdata.city[0].name}}</h3>
     <ul>
         <li>high1</li>
         <li>low1</li>
         <li>current1</li>
     </ul>
-    <h3>city2</h3>
+    <h3>{{wdata.currentdata.city[1].name}}</h3>
     <ul>
         <li>high2</li>
         <li>low2</li>

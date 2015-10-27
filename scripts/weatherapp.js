@@ -10,10 +10,27 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList", function($sco
             "search": "",
             "searchresult": []
         }];
+    this.currentdata = {};
+    this.currentdata.city = [{"name": "city1"},{"name":"city2"}];
 
     this.updatesearch = function(index) {
         getCityList.getem(this, index);
     };
+    
+    this.setcity = function(cityindex, listindex, thecity) {
+        this.currentdata.city[cityindex].name = thecity;
+        var postfix = this.searches[cityindex].searchresult[listindex].l;
+        
+        //might be locid instead of zmw - somehitg like /q/locid:RPPG0002;loctype:1 - probably ok
+        var url = "http://api.wunderground.com/api/MY_KEY_HERE/conditions" 
+                + postfix
+                + "?callback=JSON_CALLBACK.json";
+        
+        console.log(url);
+        
+        this.searches[cityindex].search = "";
+        this.searches[cityindex].searchresult = [];
+    }
 
 }]);
 
