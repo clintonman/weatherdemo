@@ -70,6 +70,7 @@ myApp.service("getCurrent", ["$http", "getForecast", function($http, getForecast
                         console.log(currentData);
                         self.currentdata.now[index].temp = currentData.temp_f;
                         self.currentdata.feel[index].temp = currentData.feelslike_f;
+                        getForecast.getitems(self, index);
                     }
             });
         }
@@ -85,10 +86,8 @@ myApp.service("getForecast", ["$http", "getHourly", function($http, getHourly) {
                     if (response.status == OK) {
                         var currentData = response.data.forecast.simpleforecast.forecastday[0];
                         console.log(currentData);
-                        //self.currentdata.now[index].temp = currentData.temp_f;
-                        //self.currentdata.feel[index].temp = currentData.feelslike_f;
-                        self.currentdata.high[index].temp = 99;
-                        self.currentdata.low[index].temp = 1;
+                        self.currentdata.high[index].temp = currentData.high.fahrenheit;
+                        self.currentdata.low[index].temp = currentData.low.fahrenheit;
                         getHourly.getitems(self, index);
                     }
             });
@@ -99,10 +98,8 @@ myApp.service("getForecast", ["$http", "getHourly", function($http, getHourly) {
                     if (response.status == OK) {
                         var currentData = response.data.forecast.simpleforecast.forecastday[0];
                         console.log(currentData);
-                        //self.currentdata.now[index].temp = currentData.temp_f;
-                        //self.currentdata.feel[index].temp = currentData.feelslike_f;
-                        self.currentdata.high[index].temp = 99;
-                        self.currentdata.low[index].temp = 1;
+                        self.currentdata.high[index].temp = currentData.high.fahrenheit;
+                        self.currentdata.low[index].temp = currentData.low.fahrenheit;
                         getHourly.getitems(self, index);
                     }
             });
@@ -120,8 +117,8 @@ myApp.service("getHourly", ["$http", function($http) {
                     if (response.status == OK) {
                         var currentData = response.data.hourly_forecast;
                         console.log(currentData);
-                        //self.currentdata.now[index].temp = currentData.temp_f;
-                        //self.currentdata.feel[index].temp = currentData.feelslike_f;
+                        self.starthour = currentData[0].FCTTIME.hour;
+                        self.hourlytemp[index] = currentData;
                     }
             });
         }
@@ -131,8 +128,8 @@ myApp.service("getHourly", ["$http", function($http) {
                     if (response.status == OK) {
                         var currentData = response.data.hourly_forecast;
                         console.log(currentData);
-                        //self.currentdata.now[index].temp = currentData.temp_f;
-                        //self.currentdata.feel[index].temp = currentData.feelslike_f;
+                        self.starthour = currentData[0].FCTTIME.hour;
+                        self.hourlytemp[index] = currentData;
                     }
             });
         }

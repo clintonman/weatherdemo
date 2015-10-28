@@ -53,6 +53,14 @@
         <li>current: {{wdata.currentdata.now[1].temp}}</li>
         <li>feels like: {{wdata.currentdata.feel[1].temp}}</li>
     </ul>
+    <h3>start hour: {{wdata.starthour}}</h3>
+    <ul>city 1 temparatures degree F
+        <li ng-repeat="hourly in wdata.hourlytemp[0]">{{hourly.temp.english}}</li>
+    </ul>
+    <h3>start hour: {{wdata.starthour}}</h3>
+    <ul>city 2 temparatures degree F
+        <li ng-repeat="hourly in wdata.hourlytemp[1]">{{hourly.temp.english}}</li>
+    </ul>
     <div style="width:400px;height:300px;background-color:red"></div>
     <div style="width:400px;height:300px;background-color:blue"></div>
 
