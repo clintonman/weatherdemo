@@ -1,7 +1,6 @@
 var myApp = angular.module('weatherApp', []);
 
-myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent",
-                                 function($scope, $http, getCityList, getCurrent) {
+myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", function($scope, $http, getCityList, getCurrent) {
     this.section = "first section";
     this.searches = [{
             "search": "",
@@ -20,6 +19,9 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent",
                                      
     this.hourlytemp = [[],[]];
     this.starthour = 0;
+                                     
+    this.points = "20,100 40,60 70,80 100,20";
+    this.temperatures = ["0,0 1,1","0,0 1,1"];
                                      
 
     this.updatesearch = function(index) {
@@ -55,7 +57,7 @@ myApp.service("getCurrent", ["$http", "getForecast", function($http, getForecast
                 .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.current_observation;
-                        console.log(currentData);
+                        //console.log(currentData);
                         self.currentdata.now[index].temp = currentData.temp_f;
                         self.currentdata.feel[index].temp = currentData.feelslike_f;
                         getForecast.getitems(self, index);
@@ -67,7 +69,7 @@ myApp.service("getCurrent", ["$http", "getForecast", function($http, getForecast
                 .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.current_observation;
-                        console.log(currentData);
+                        //console.log(currentData);
                         self.currentdata.now[index].temp = currentData.temp_f;
                         self.currentdata.feel[index].temp = currentData.feelslike_f;
                         getForecast.getitems(self, index);
@@ -85,7 +87,7 @@ myApp.service("getForecast", ["$http", "getHourly", function($http, getHourly) {
                 .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.forecast.simpleforecast.forecastday[0];
-                        console.log(currentData);
+                        //console.log(currentData);
                         self.currentdata.high[index].temp = currentData.high.fahrenheit;
                         self.currentdata.low[index].temp = currentData.low.fahrenheit;
                         getHourly.getitems(self, index);
@@ -97,7 +99,7 @@ myApp.service("getForecast", ["$http", "getHourly", function($http, getHourly) {
                 .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.forecast.simpleforecast.forecastday[0];
-                        console.log(currentData);
+                        //console.log(currentData);
                         self.currentdata.high[index].temp = currentData.high.fahrenheit;
                         self.currentdata.low[index].temp = currentData.low.fahrenheit;
                         getHourly.getitems(self, index);
@@ -107,7 +109,7 @@ myApp.service("getForecast", ["$http", "getHourly", function($http, getHourly) {
     };
 }]);
 
-myApp.service("getHourly", ["$http", function($http) {
+myApp.service("getHourly", ["$http","plotHourly", function($http, plotHourly) {
     this.getitems = function(self, index) {
         //console.log("hourly is next");
         var OK = 200;
@@ -116,9 +118,10 @@ myApp.service("getHourly", ["$http", function($http) {
                 .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.hourly_forecast;
-                        console.log(currentData);
+                        //console.log(currentData);
                         self.starthour = currentData[0].FCTTIME.hour;
                         self.hourlytemp[index] = currentData;
+                        plotHourly.plot(self);
                     }
             });
         }
@@ -127,13 +130,34 @@ myApp.service("getHourly", ["$http", function($http) {
                 .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.hourly_forecast;
-                        console.log(currentData);
+                        //console.log(currentData);
                         self.starthour = currentData[0].FCTTIME.hour;
                         self.hourlytemp[index] = currentData;
+                        plotHourly.plot(self);
                     }
             });
         }
     };
+}]);
+
+myApp.service("plotHourly", [function(){
+    this.plot = function(self) {
+        if(self.hourlytemp[0].length > 0 && self.hourlytemp[1].length > 0) {
+        //    alert("plot values");
+            self.temperatures[0] = getTemperaturePoints(self.hourlytemp[0]);
+            self.temperatures[1] = getTemperaturePoints(self.hourlytemp[1]);
+        }
+    };
+    
+    function getTemperaturePoints(arr) {
+        //console.log(arr);
+        //return;
+            var graphpoints = "";
+            for(var i =0; i < 24; i++) {
+                graphpoints += i*400/23 +',' +arr[i].temp.english + ' ';
+            }
+            return graphpoints;
+        }
 }]);
 
 //get the weather underground autocomplete api list of city names and locations
