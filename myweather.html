@@ -41,15 +41,17 @@
     </ul>
     <h4>{{wdata.currentdata.city[0].name}}</h4>
     <ul>
-        <li>high1</li>
-        <li>low1</li>
-        <li>current1</li>
+        <li>high: {{wdata.currentdata.high[0].temp}}</li>
+        <li>low: {{wdata.currentdata.low[0].temp}}</li>
+        <li>current: {{wdata.currentdata.now[0].temp}}</li>
+        <li>feels like: {{wdata.currentdata.feel[0].temp}}</li>
     </ul>
     <h4>{{wdata.currentdata.city[1].name}}</h4>
     <ul>
-        <li>high2</li>
-        <li>low2</li>
-        <li>current2</li>
+        <li>high: {{wdata.currentdata.high[1].temp}}</li>
+        <li>low: {{wdata.currentdata.low[1].temp}}</li>
+        <li>current: {{wdata.currentdata.now[1].temp}}</li>
+        <li>feels like: {{wdata.currentdata.feel[1].temp}}</li>
     </ul>
     <div style="width:400px;height:300px;background-color:red"></div>
     <div style="width:400px;height:300px;background-color:blue"></div>
