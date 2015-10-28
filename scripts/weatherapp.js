@@ -1,7 +1,7 @@
 var myApp = angular.module('weatherApp', []);
 
-myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", "getForecast", "getHourly",
-                                 function($scope, $http, getCityList, getCurrent, getForecast, getHourly) {
+myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent",
+                                 function($scope, $http, getCityList, getCurrent) {
     this.section = "first section";
     this.searches = [{
             "search": "",
@@ -17,6 +17,10 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", 
     this.currentdata.low = [{"temp":0},{"temp":0}];
     this.currentdata.now = [{"temp":50},{"temp":50}];
     this.currentdata.feel = [{"temp":50},{"temp":50}];
+                                     
+    this.hourlytemp = [[],[]];
+    this.starthour = 0;
+                                     
 
     this.updatesearch = function(index) {
         getCityList.getitems(this, index);
@@ -42,7 +46,7 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", 
 
 }]);
 
-myApp.service("getCurrent", ["$http", function($http) {
+myApp.service("getCurrent", ["$http", "getForecast", function($http, getForecast) {
     //testing 0 = palos, 1 = trabuco
     this.getitems = function(self, index) {
         var OK = 200;
@@ -54,9 +58,7 @@ myApp.service("getCurrent", ["$http", function($http) {
                         console.log(currentData);
                         self.currentdata.now[index].temp = currentData.temp_f;
                         self.currentdata.feel[index].temp = currentData.feelslike_f;
-                        //chain to be sure to get all the data - is this possible?
-                        //call for forecast to get high and low
-                        //  inside forecast call for hourly
+                        getForecast.getitems(self, index);
                     }
             });
         }
@@ -74,13 +76,66 @@ myApp.service("getCurrent", ["$http", function($http) {
     };
 }]);
 
-myApp.service("getForecast", ["$http", function($http) {
+myApp.service("getForecast", ["$http", "getHourly", function($http, getHourly) {
     this.getitems = function(self, index) {
+        var OK = 200;
+        if(index==0) {
+            $http.get("palosForecast.json")
+                .then(function (response) {
+                    if (response.status == OK) {
+                        var currentData = response.data.forecast.simpleforecast.forecastday[0];
+                        console.log(currentData);
+                        //self.currentdata.now[index].temp = currentData.temp_f;
+                        //self.currentdata.feel[index].temp = currentData.feelslike_f;
+                        self.currentdata.high[index].temp = 99;
+                        self.currentdata.low[index].temp = 1;
+                        getHourly.getitems(self, index);
+                    }
+            });
+        }
+        if(index==1) {
+            $http.get("trabucoForecast.json")
+                .then(function (response) {
+                    if (response.status == OK) {
+                        var currentData = response.data.forecast.simpleforecast.forecastday[0];
+                        console.log(currentData);
+                        //self.currentdata.now[index].temp = currentData.temp_f;
+                        //self.currentdata.feel[index].temp = currentData.feelslike_f;
+                        self.currentdata.high[index].temp = 99;
+                        self.currentdata.low[index].temp = 1;
+                        getHourly.getitems(self, index);
+                    }
+            });
+        }
     };
 }]);
 
 myApp.service("getHourly", ["$http", function($http) {
     this.getitems = function(self, index) {
+        //console.log("hourly is next");
+        var OK = 200;
+        if(index==0) {
+            $http.get("palosHourly.json")
+                .then(function (response) {
+                    if (response.status == OK) {
+                        var currentData = response.data.hourly_forecast;
+                        console.log(currentData);
+                        //self.currentdata.now[index].temp = currentData.temp_f;
+                        //self.currentdata.feel[index].temp = currentData.feelslike_f;
+                    }
+            });
+        }
+        if(index==1) {
+            $http.get("trabucoHourly.json")
+                .then(function (response) {
+                    if (response.status == OK) {
+                        var currentData = response.data.hourly_forecast;
+                        console.log(currentData);
+                        //self.currentdata.now[index].temp = currentData.temp_f;
+                        //self.currentdata.feel[index].temp = currentData.feelslike_f;
+                    }
+            });
+        }
     };
 }]);
 
