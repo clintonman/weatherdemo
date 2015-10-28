@@ -144,17 +144,22 @@ myApp.service("plotHourly", [function(){
     this.plot = function(self) {
         if(self.hourlytemp[0].length > 0 && self.hourlytemp[1].length > 0) {
         //    alert("plot values");
-            self.temperatures[0] = getTemperaturePoints(self.hourlytemp[0]);
-            self.temperatures[1] = getTemperaturePoints(self.hourlytemp[1]);
+
+            var high = Math.max(self.currentdata.high[0].temp, self.currentdata.high[1].temp);
+            var low = Math.min(self.currentdata.low[0].temp, self.currentdata.low[1].temp);
+            self.temperatures[0] = getTemperaturePoints(self.hourlytemp[0],high,low);
+            self.temperatures[1] = getTemperaturePoints(self.hourlytemp[1],high,low);
         }
     };
     
-    function getTemperaturePoints(arr) {
+    function getTemperaturePoints(arr, high, low) {
         //console.log(arr);
         //return;
+        var range = high - low;
             var graphpoints = "";
             for(var i =0; i < 24; i++) {
-                graphpoints += i*400/23 +',' +arr[i].temp.english + ' ';
+                var scaledTemperature = 300 - (arr[i].temp.english - low) * 300 / range;
+                graphpoints += i*400/23 +',' + scaledTemperature + ' ';
             }
             return graphpoints;
         }
