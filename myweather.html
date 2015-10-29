@@ -39,6 +39,8 @@
             <button ng-click="wdata.setcity(1, $index, thename.name)">{{thename.name}}</button>
         </li>
     </ul>
+    <div>
+    <img ng-src="{{wdata.currentdata.graphic[0].icon}}" alt="">
     <h4>{{wdata.currentdata.city[0].name}}</h4>
     <ul>
         <li>high: {{wdata.currentdata.high[0].temp}}</li>
@@ -46,6 +48,9 @@
         <li>current: {{wdata.currentdata.now[0].temp}}</li>
         <li>feels like: {{wdata.currentdata.feel[0].temp}}</li>
     </ul>
+    </div>
+    <div>
+    <img ng-src="{{wdata.currentdata.graphic[1].icon}}" alt="">
     <h4>{{wdata.currentdata.city[1].name}}</h4>
     <ul>
         <li>high: {{wdata.currentdata.high[1].temp}}</li>
@@ -53,27 +58,18 @@
         <li>current: {{wdata.currentdata.now[1].temp}}</li>
         <li>feels like: {{wdata.currentdata.feel[1].temp}}</li>
     </ul>
-    
+    </div>
    
    <svg style="width:50%" viewBox="0 0 402 302">
         <svg>
-           <rect x="0" y="0" width="400" height="300" fill="green" stroke="red"/>
+           <rect x="0" y="0" width="400" height="300" fill="#ccffcc" stroke="red"/>
        </svg>
        <svg>
            <polyline id="plotcity1" ng-attr-points="{{wdata.temperatures[0]}}" stroke="blue" fill="none"/>
            <polyline id="plotcity2" ng-attr-points="{{wdata.temperatures[1]}}" stroke="red" fill="none"/>
        </svg>
    </svg>
-    <div style="width:400px;height:300px;background-color:blue"></div>
     <h3>start hour: {{wdata.starthour}}</h3>
-    <ul>city 1 temparatures degree F
-        <li ng-repeat="hourly in wdata.hourlytemp[0]">{{hourly.temp.english}}</li>
-    </ul>
-    <h3>start hour: {{wdata.starthour}}</h3>
-    <ul>city 2 temparatures degree F
-        <li ng-repeat="hourly in wdata.hourlytemp[1]">{{hourly.temp.english}}</li>
-    </ul>
-
 
 </body>
 

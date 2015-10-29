@@ -16,6 +16,8 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", 
     this.currentdata.low = [{"temp":0},{"temp":0}];
     this.currentdata.now = [{"temp":50},{"temp":50}];
     this.currentdata.feel = [{"temp":50},{"temp":50}];
+    this.currentdata.graphic = [{"icon":""},
+                                {"icon":""}];
                                      
     this.hourlytemp = [[],[]];
     this.starthour = 0;
@@ -60,6 +62,7 @@ myApp.service("getCurrent", ["$http", "getForecast", function($http, getForecast
                         //console.log(currentData);
                         self.currentdata.now[index].temp = currentData.temp_f;
                         self.currentdata.feel[index].temp = currentData.feelslike_f;
+                        self.currentdata.graphic[index].icon = currentData.icon_url;
                         getForecast.getitems(self, index);
                     }
             });
@@ -72,6 +75,8 @@ myApp.service("getCurrent", ["$http", "getForecast", function($http, getForecast
                         //console.log(currentData);
                         self.currentdata.now[index].temp = currentData.temp_f;
                         self.currentdata.feel[index].temp = currentData.feelslike_f;
+                        self.currentdata.graphic[index].icon = currentData.icon_url;
+                        //console.log(self.currentdata.graphic[index].icon);
                         getForecast.getitems(self, index);
                     }
             });
