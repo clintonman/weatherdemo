@@ -1,7 +1,7 @@
 var myApp = angular.module('weatherApp', []);
 
 myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", function($scope, $http, getCityList, getCurrent) {
-    this.section = "first section";
+    this.section = "1st app compare temperature forecast in 2 locations";
     this.searches = [{
             "search": "",
             "searchresult": []
