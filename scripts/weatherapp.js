@@ -14,7 +14,7 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", 
     this.currentdata.city = [{"name": "city1"},{"name":"city2"}];
     this.currentdata.high = [{"temp":100},{"temp":100}];
     this.currentdata.low = [{"temp":0},{"temp":0}];
-    this.currentdata.now = [{"temp":50},{"temp":50}];
+    this.currentdata.now = [{"temp":50.5},{"temp":50.5}];
     this.currentdata.feel = [{"temp":50},{"temp":50}];
     this.currentdata.graphic = [{"icon":""},
                                 {"icon":""}];
@@ -163,7 +163,7 @@ myApp.service("plotHourly", [function(){
         var range = high - low;
             var graphpoints = "";
             for(var i =0; i < 24; i++) {
-                var scaledTemperature = 300 - (arr[i].temp.english - low) * 300 / range;
+                var scaledTemperature = 150 - (arr[i].temp.english - low) * 150 / range;
                 graphpoints += i*400/23 +',' + scaledTemperature + ' ';
             }
             return graphpoints;
