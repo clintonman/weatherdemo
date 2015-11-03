@@ -31,6 +31,9 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", 
     };
     
     this.setcity = function(cityindex, listindex, thecity) {
+        if(thecity.length > 26) {
+            thecity = thecity.substr(0,26);
+        }
         this.currentdata.city[cityindex].name = thecity;
         var location = this.searches[cityindex].searchresult[listindex].l;
         

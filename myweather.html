@@ -22,6 +22,18 @@
         body {
             background-color:#aaa;
         }
+        sup { 
+            vertical-align: super;
+            font-size: 0.4em;
+        }
+        .graphcity1 {
+            border:2px solid cyan;
+            background-color:#dff;
+        }
+        .graphcity2 {
+            border:2px solid #0f0;
+            background-color:#dfd;
+        }
         .high {
             color:#a00;
         }
@@ -34,7 +46,7 @@
         h3.cityname {
             padding-left:5px;
             padding-right:0;
-            margin:3px 0;
+            margin:6px 0;
         }
         .currentdata {
             padding: 0;
@@ -83,6 +95,7 @@
             padding-top: 10px;
             padding-bottom: 10px;
             margin:0;
+            padding-left:10px;
         }
         .jumbotron small {
             font-size:0.5em;
@@ -115,7 +128,7 @@
         <div class="well well-sm" style="overflow:auto; margin:2px 0;">
 
         <div class="col-xs-12 col-sm-6">
-            <input ng-model="wdata.searches[0].search" ng-change="wdata.updatesearch(0)" type="text" class="form-control" placeholder="Search 1">
+            <input ng-model="wdata.searches[0].search" ng-change="wdata.updatesearch(0)" type="text" class="form-control graphcity1" placeholder="Search 1">
             <ul>
                 <li ng-repeat="thename in wdata.searches[0].searchresult">
                     <button ng-click="wdata.setcity(0, $index, thename.name)">{{thename.name}}</button>
@@ -123,7 +136,7 @@
             </ul>
         </div>
         <div class="col-xs-12 col-sm-6">
-            <input ng-model="wdata.searches[1].search" ng-change="wdata.updatesearch(1)" type="text" class="form-control" placeholder="Search 2">
+            <input ng-model="wdata.searches[1].search" ng-change="wdata.updatesearch(1)" type="text" class="form-control graphcity2" placeholder="Search 2">
             <ul>
                 <li ng-repeat="thename in wdata.searches[1].searchresult">
                     <button ng-click="wdata.setcity(1, $index, thename.name)">{{thename.name}}</button>
@@ -131,7 +144,7 @@
             </ul>
         </div>
         </div>
-        <div class="eachcity well well-sm col-xs-12 col-sm-6">
+        <div class="eachcity graphcity1 panel col-xs-12 col-sm-6">
             <h3 class="cityname col-xs-7 col-sm-12">{{wdata.currentdata.city[0].name}}</h3>
             <div class="col-xs-5 col-sm-12 currentdata">
                 <div class="col-xs-5 col-sm-3"><img ng-src="{{wdata.currentdata.graphic[0].icon}}" alt=""></div>
@@ -146,7 +159,7 @@
             </div>
         </div>
 
-        <div class="eachcity well well-sm col-xs-12 col-sm-6">
+        <div class="eachcity graphcity2 panel col-xs-12 col-sm-6">
             <h3 class="cityname col-xs-7 col-sm-12">{{wdata.currentdata.city[1].name}}</h3>
             <div class="col-xs-5 col-sm-12 currentdata">
                 <div class="col-xs-5 col-sm-3"><img ng-src="{{wdata.currentdata.graphic[1].icon}}" alt=""></div>
@@ -161,14 +174,15 @@
             </div>
         </div>
         
+        <div class="col-xs-12 well well-sm">Temperatures in &deg;F - plot of the next 24 hours</div>
 
     <svg class="col-xs-12 well" viewBox="0 0 400 150">
         <svg>
-            <rect x="0" y="0" width="400" height="150" fill="#ccffcc" stroke="red" />
+            <rect x="0" y="0" width="400" height="150" fill="#ddd" stroke="#888" />
         </svg>
         <svg>
-            <polyline id="plotcity1" ng-attr-points="{{wdata.temperatures[0]}}" stroke="blue" fill="none" />
-            <polyline id="plotcity2" ng-attr-points="{{wdata.temperatures[1]}}" stroke="red" fill="none" />
+            <polyline id="plotcity1" ng-attr-points="{{wdata.temperatures[0]}}" stroke="#0ff" stroke-width="2" fill="none" />
+            <polyline id="plotcity2" ng-attr-points="{{wdata.temperatures[1]}}" stroke="#0f0" stroke-width="2" fill="none" />
         </svg>
     </svg>
     <h3>start hour: {{wdata.starthour}}</h3>
