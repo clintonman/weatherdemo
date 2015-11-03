@@ -19,20 +19,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="scripts/weatherapp.js"></script>
     <style>
+        h3 {
+            overflow:hidden;
+        }
         .currentdata {
             padding: 0;
         }
         
         .currenttemp {
-            font-size: 6em;
+            font-size: 3em;
             font-weight: bold;
             padding: auto 0;
             margin: 0;
-            line-height: 80%;
+            line-height: 100%;
         }
         
         .othertemps {
-            font-size: 1.5em;
+            font-size: 1.2em;
             padding-right: 0;
         }
         
@@ -55,6 +58,15 @@
         .jumbotron {
             padding-top: 10px;
             padding-bottom: 10px;
+        }
+        @media (min-width: 768px) {
+            .currenttemp {
+                font-size: 6em;
+                line-height: 80%;
+            }
+            .othertemps {
+                font-size: 1.5em;
+            }
         }
 
     </style>
@@ -91,11 +103,11 @@
                 <div class="col-xs-6 col-sm-9 currenttemp">{{wdata.currentdata.now[0].temp}}</div>
             </div>
             <div class="col-xs-12 row">
-                <div class="col-xs-5 row">
+                <div class="col-xs-8 col-sm-6 row">
                     <div class="othertemps col-xs-6 col-sm-12">high: {{wdata.currentdata.high[0].temp}}</div>
                     <div class="othertemps col-xs-6 col-sm-12">low: {{wdata.currentdata.low[0].temp}}</div>
                 </div>
-                <div class="othertemps col-xs-7">feels like: {{wdata.currentdata.feel[0].temp}}</div>
+                <div class="othertemps col-xs-4 col-sm-6">feels like: {{wdata.currentdata.feel[0].temp}}</div>
             </div>
         </div>
 
@@ -106,11 +118,11 @@
                 <div class="col-xs-6 col-sm-9 currenttemp">{{wdata.currentdata.now[1].temp}}</div>
             </div>
             <div class="col-xs-12 row">
-                <div class="col-xs-5 row">
+                <div class="col-xs-6 row">
                     <div class="othertemps col-xs-6 col-sm-12">high: {{wdata.currentdata.high[1].temp}}</div>
                     <div class="othertemps col-xs-6 col-sm-12">low: {{wdata.currentdata.low[1].temp}}</div>
                 </div>
-                <div class="othertemps col-xs-7">feels like: {{wdata.currentdata.feel[1].temp}}</div>
+                <div class="othertemps col-xs-6 col-sm-6">feels like: {{wdata.currentdata.feel[1].temp}}</div>
             </div>
         </div>
         
