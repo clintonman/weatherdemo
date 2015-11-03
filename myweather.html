@@ -20,40 +20,53 @@
     <script src="scripts/weatherapp.js"></script>
     <style>
         body {
-            background-color:#aaa;
+            background-color: #aaa;
         }
-        sup { 
+        
+        sup {
             vertical-align: super;
             font-size: 0.4em;
         }
+        
         .graphcity1 {
-            border:2px solid cyan;
-            background-color:#dff;
+            border: 2px solid cyan;
+            background-color: #dff;
         }
+        .graphcity1a {
+            background-color: #dff;
+            padding:20px;
+        }
+        
         .graphcity2 {
-            border:2px solid #0f0;
-            background-color:#dfd;
+            border: 2px solid #0f0;
+            background-color: #dfd;
         }
+        
         .high {
-            color:#a00;
+            color: #a00;
         }
+        
         .low {
-            color:#00a;
+            color: #00a;
         }
+        
         h3 {
-            font-size:1.2em;
+            font-size: 1.2em;
         }
+        
         h3.cityname {
-            padding-left:5px;
-            padding-right:0;
-            margin:6px 0;
+            padding-left: 5px;
+            padding-right: 0;
+            margin: 6px 0;
         }
+        
         .currentdata {
             padding: 0;
         }
+        
         .currentdata div {
-            padding-left:5px;
-            padding-right:0;
+            padding-left: 5px;
+            padding-right: 0;
         }
         
         .currenttemp {
@@ -65,41 +78,51 @@
         }
         
         .eachcity {
-            padding:0;
-            margin:0;
+            padding: 0;
+            margin: 0;
         }
         
         .eachcity img {
             margin: 0 auto;
-            width:75%;
+            width: 75%;
+            max-width:45px;
         }
         
         .eachcity div {
-            padding-left:0;
-            margin-left:0;
+            padding-left: 0;
+            margin-left: 0;
         }
         
         .well {
-            margin-bottom:2px;
+            margin-bottom: 2px;
         }
         
         .othertemps {
             font-size: 1.2em;
             padding-right: 0;
         }
+        
         div.othertemps {
-            padding-left:3px;
+            padding-left: 3px;
         }
         
         .jumbotron {
             padding-top: 10px;
             padding-bottom: 10px;
-            margin:0;
-            padding-left:10px;
+            margin: 0;
+            padding-left: 10px;
         }
+        
         .jumbotron small {
-            font-size:0.5em;
+            font-size: 0.5em;
         }
+        .searchcontainer {
+            overflow:visible; margin:2px 0;padding-top:10px;padding-bottom:80px;
+        }
+        .searchcontainer ul {
+            position:absolute;margin-top:10px;margin-left:30px;z-index:5;overflow:visible;
+        }
+        
         @media (min-width: 768px) {
             .currenttemp {
                 font-size: 6em;
@@ -107,13 +130,20 @@
             }
             .othertemps {
                 font-size: 1.5em;
+                
+            }
+            div.othertemps {
+                padding-left:10px;
             }
             h3 {
-                font-size:2em;
+                font-size: 2em;
             }
             .eachcity img {
-                max-width: 65px;
-                width: 100%;
+                max-width: 75px;
+                padding-left:10px;
+            }
+            .searchcontainer {
+                padding-bottom:40px;
             }
         }
 
@@ -125,25 +155,27 @@
         <div class="jumbotron">
             <h1>Weather <small>City Temperatures</small></h1>
         </div>
-        <div class="well well-sm" style="overflow:auto; margin:2px 0;">
+        <div class="searchcontainer well well-sm">
 
-        <div class="col-xs-12 col-sm-6">
-            <input ng-model="wdata.searches[0].search" ng-change="wdata.updatesearch(0)" type="text" class="form-control graphcity1" placeholder="Search 1">
-            <ul>
-                <li ng-repeat="thename in wdata.searches[0].searchresult">
-                    <button ng-click="wdata.setcity(0, $index, thename.name)">{{thename.name}}</button>
-                </li>
-            </ul>
+            <div class="col-xs-12 col-sm-6">
+                <input ng-model="wdata.searches[0].search" ng-change="wdata.updatesearch(0)" type="text" class="form-control graphcity1" placeholder="Search 1">
+                <ul class="list-unstyled graphcity1" ng-show="wdata.searches[0].search != '' " >
+                    <li ng-repeat="thename in wdata.searches[0].searchresult">
+                        <button ng-click="wdata.setcity(0, $index, thename.name)">{{thename.name}}</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xs-12 col-sm-6">
+                <input ng-model="wdata.searches[1].search" ng-change="wdata.updatesearch(1)" type="text" class="form-control graphcity2" placeholder="Search 2">
+                <ul class="list-unstyled graphcity2" ng-show="wdata.searches[1].search != '' ">
+                    <li ng-repeat="thename in wdata.searches[1].searchresult">
+                        <button ng-click="wdata.setcity(1, $index, thename.name)">{{thename.name}}</button>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-6">
-            <input ng-model="wdata.searches[1].search" ng-change="wdata.updatesearch(1)" type="text" class="form-control graphcity2" placeholder="Search 2">
-            <ul>
-                <li ng-repeat="thename in wdata.searches[1].searchresult">
-                    <button ng-click="wdata.setcity(1, $index, thename.name)">{{thename.name}}</button>
-                </li>
-            </ul>
-        </div>
-        </div>
+
         <div class="eachcity graphcity1 panel col-xs-12 col-sm-6">
             <h3 class="cityname col-xs-7 col-sm-12">{{wdata.currentdata.city[0].name}}</h3>
             <div class="col-xs-5 col-sm-12 currentdata">
@@ -173,19 +205,19 @@
                 <div class="othertemps col-xs-4 col-sm-6">feels like: {{wdata.currentdata.feel[1].temp}}</div>
             </div>
         </div>
-        
+
         <div class="col-xs-12 well well-sm">Temperatures in &deg;F - plot of the next 24 hours</div>
 
-    <svg class="col-xs-12 well" viewBox="0 0 400 150">
-        <svg>
-            <rect x="0" y="0" width="400" height="150" fill="#ddd" stroke="#888" />
+        <svg class="col-xs-12 well" viewBox="0 0 400 150">
+            <svg>
+                <rect x="0" y="0" width="400" height="150" fill="#ddd" stroke="#888" />
+            </svg>
+            <svg>
+                <polyline id="plotcity1" ng-attr-points="{{wdata.temperatures[0]}}" stroke="#0ff" stroke-width="2" fill="none" />
+                <polyline id="plotcity2" ng-attr-points="{{wdata.temperatures[1]}}" stroke="#0f0" stroke-width="2" fill="none" />
+            </svg>
         </svg>
-        <svg>
-            <polyline id="plotcity1" ng-attr-points="{{wdata.temperatures[0]}}" stroke="#0ff" stroke-width="2" fill="none" />
-            <polyline id="plotcity2" ng-attr-points="{{wdata.temperatures[1]}}" stroke="#0f0" stroke-width="2" fill="none" />
-        </svg>
-    </svg>
-    <h3>start hour: {{wdata.starthour}}</h3>
+        <h3>start hour: {{wdata.starthour}}</h3>
     </div>
 </body>
 

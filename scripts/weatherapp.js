@@ -179,7 +179,8 @@ myApp.service("getCityList", ["$http", function($http) {
 
         var searchfield = self.searches[index].search;
 
-        if (!searchfield || searchfield.length < 3) {
+        //if (!searchfield || searchfield.length < 3) {
+        if (!searchfield) {
             self.searches[index].searchresult = [];
             return;
         }
