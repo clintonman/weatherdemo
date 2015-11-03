@@ -14,7 +14,7 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", 
     this.currentdata.city = [{"name": "city1"},{"name":"city2"}];
     this.currentdata.high = [{"temp":100},{"temp":100}];
     this.currentdata.low = [{"temp":0},{"temp":0}];
-    this.currentdata.now = [{"temp":50.5},{"temp":50.5}];
+    this.currentdata.now = [{"temp":150.5},{"temp":150.5}];
     this.currentdata.feel = [{"temp":50},{"temp":50}];
     this.currentdata.graphic = [{"icon":""},
                                 {"icon":""}];
