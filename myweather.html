@@ -10,6 +10,8 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="css/weather.css">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -18,144 +20,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="scripts/weatherapp.js"></script>
-    <style>
-        body {
-            background-color: #aaa;
-        }
-        
-        sup {
-            vertical-align: super;
-            font-size: 0.4em;
-        }
-        
-        .graphcity1 {
-            border: 2px solid cyan;
-            background-color: #dff;
-        }
-        .graphcity1a {
-            background-color: #dff;
-            padding:20px;
-        }
-        
-        .graphcity2 {
-            border: 2px solid #0f0;
-            background-color: #dfd;
-        }
-        
-        .high {
-            color: #a00;
-        }
-        
-        .low {
-            color: #00a;
-        }
-        
-        h3 {
-            font-size: 1.2em;
-        }
-        
-        h3.cityname {
-            padding-left: 5px;
-            padding-right: 0;
-            margin: 6px 0;
-        }
-        
-        .currentdata {
-            padding: 0;
-        }
-        
-        .currentdata div {
-            padding-left: 5px;
-            padding-right: 0;
-        }
-        
-        .currenttemp {
-            font-size: 2em;
-            font-weight: bold;
-            padding: auto 0;
-            margin: 0;
-            line-height: 100%;
-        }
-        
-        .eachcity {
-            padding: 0;
-            margin: 0;
-        }
-        
-        .eachcity img {
-            margin: 0 auto;
-            width: 75%;
-            max-width:45px;
-        }
-        
-        .eachcity div {
-            padding-left: 0;
-            padding-right:0;
-            margin-left: 0;
-        }
-        
-        .well {
-            margin-bottom: 2px;
-        }
-        
-        .othertemps {
-            font-size: 1.1em;
-            padding-right: 0;
-        }
-        
-        div.othertemps {
-            padding-left: 3px;
-        }
-        
-        .jumbotron {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            margin: 0;
-            padding-left: 10px;
-        }
-        
-        .jumbotron small {
-            font-size: 0.5em;
-        }
-        .searchcontainer {
-            overflow:visible; margin:2px 0;padding-top:10px;padding-bottom:80px;
-        }
-        .searchcontainer ul {
-            position:absolute;margin-top:10px;margin-left:30px;z-index:5;overflow:visible;
-        }
-        
-        @media (min-width: 768px) {
-            .currenttemp {
-                font-size: 6em;
-                line-height: 80%;
-            }
-            .othertemps {
-                font-size: 1.5em;
-                
-            }
-            div.othertemps {
-                padding-left:10px;
-            }
-            h3 {
-                font-size: 2em;
-            }
-            .eachcity img {
-                max-width: 75px;
-                padding-left:10px;
-            }
-            .searchcontainer {
-                padding-bottom:40px;
-            }
-        }
 
-    </style>
 </head>
 
 <body ng-controller="weatherCtrl as wdata">
     <div class="container-fluid">
         <div class="jumbotron">
             <h1>Weather <small>City Temperatures</small></h1>
-            <button class="btn" ng-click="wdata.toggleunits()">Toggle Units</button>
         </div>
         <div class="searchcontainer well well-sm">
 
@@ -208,18 +79,25 @@
             </div>
         </div>
 
-        <div class="col-xs-12 well well-sm">Temperatures in &deg;{{wdata.tempunits}} - plot of the next 24 hours</div>
+        <button class="btn btn-block btn-primary btn-sm" ng-click="wdata.toggleunits()">Temperatures in &deg;{{wdata.tempunits}} - plot of the next 24 hours<br>press to change units</button>
 
         <svg class="col-xs-12 well" viewBox="0 0 400 150">
             <svg>
-                <rect x="0" y="0" width="400" height="150" fill="#ddd" stroke="#888" />
+                <rect x="0" y="0" width="400" height="150" fill="#ccc" stroke="#888" />
+                <line x1="50" y1="150" x2="50" y2="0" stroke="#fff" stroke-width="1"/>
+                <line x1="100" y1="150" x2="100" y2="0" stroke="#fff" stroke-width="1"/>
+                <line x1="150" y1="150" x2="150" y2="0" stroke="#fff" stroke-width="1"/>
+                <line x1="200" y1="150" x2="200" y2="0" stroke="#fff" stroke-width="1"/>
+                <line x1="250" y1="150" x2="250" y2="0" stroke="#fff" stroke-width="1"/>
+                <line x1="300" y1="150" x2="300" y2="0" stroke="#fff" stroke-width="1"/>
+                <line x1="350" y1="150" x2="350" y2="0" stroke="#fff" stroke-width="1"/>
             </svg>
             <svg>
                 <polyline id="plotcity1" ng-attr-points="{{wdata.temperatures[0]}}" stroke="#0ff" stroke-width="2" fill="none" />
                 <polyline id="plotcity2" ng-attr-points="{{wdata.temperatures[1]}}" stroke="#0f0" stroke-width="2" fill="none" />
             </svg>
         </svg>
-        <h3>start hour: {{wdata.starthour}}</h3>
+        <h3>start hour: {{wdata.starthour}}:00</h3>
     </div>
 </body>
 

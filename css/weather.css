@@ -1,0 +1,116 @@
+body {
+    background-color: #aaa;
+}
+sup {
+    vertical-align: super;
+    font-size: 0.4em;
+}
+.graphcity1 {
+    border: 2px solid cyan;
+    background-color: #dff;
+}
+.graphcity1a {
+    background-color: #dff;
+    padding: 20px;
+}
+.graphcity2 {
+    border: 2px solid #0f0;
+    background-color: #dfd;
+}
+.high {
+    color: #a00;
+}
+.low {
+    color: #00a;
+}
+h3 {
+    font-size: 1.2em;
+}
+h3.cityname {
+    padding-left: 5px;
+    padding-right: 0;
+    margin: 6px 0;
+}
+.currentdata {
+    padding: 0;
+}
+.currentdata div {
+    padding-left: 5px;
+    padding-right: 0;
+}
+.currenttemp {
+    font-size: 2em;
+    font-weight: bold;
+    padding: auto 0;
+    margin: 0;
+    line-height: 100%;
+}
+.eachcity {
+    padding: 0;
+    margin: 0;
+}
+.eachcity img {
+    margin: 0 auto;
+    width: 75%;
+    max-width: 45px;
+}
+.eachcity div {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+}
+.well {
+    margin-bottom: 2px;
+}
+.othertemps {
+    font-size: 1.1em;
+    padding-right: 0;
+}
+div.othertemps {
+    padding-left: 3px;
+}
+.jumbotron {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    padding-left: 10px;
+}
+.jumbotron small {
+    font-size: 0.5em;
+}
+.searchcontainer {
+    overflow: visible;
+    margin: 2px 0;
+    padding-top: 10px;
+    padding-bottom: 80px;
+}
+.searchcontainer ul {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 30px;
+    z-index: 5;
+    overflow: visible;
+}
+/* 768px from bootstrap website */
+@media (min-width: 768px) {
+    .currenttemp {
+        font-size: 6em;
+        line-height: 80%;
+    }
+    .othertemps {
+        font-size: 1.5em;
+    }
+    div.othertemps {
+        padding-left: 10px;
+    }
+    h3 {
+        font-size: 2em;
+    }
+    .eachcity img {
+        max-width: 75px;
+        padding-left: 10px;
+    }
+    .searchcontainer {
+        padding-bottom: 40px;
+    }
+}
