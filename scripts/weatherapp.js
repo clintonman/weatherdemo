@@ -1,6 +1,6 @@
 var myApp = angular.module('weatherApp', []);
 
-myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", function($scope, $http, getCityList, getCurrent) {
+myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent","displayTemperature", function($scope, $http, getCityList, getCurrent, displayTemperature) {
     this.section = "1st app compare temperature forecast in 2 locations";
     this.searches = [{
             "search": "",
@@ -24,6 +24,9 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", 
                                      
     this.points = "20,100 40,60 70,80 100,20";
     this.temperatures = ["0,0 1,1","0,0 1,1"];
+    
+    this.englishunits = true;
+    this.tempunits = "F";
                                      
 
     this.updatesearch = function(index) {
@@ -50,6 +53,22 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent", 
 
         getCurrent.getitems(this, cityindex);
     }
+    this.toggleunits = function(){
+        if(this.englishunits) {
+            this.englishunits = false;
+            this.tempunits = "C";
+        } else {
+            this.englishunits = true;
+            this.tempunits = "F";
+        }
+    };
+    this.convert = function(temp) {
+        if(this.englishunits) {
+            return (temp*1).toFixed(1);
+        } else {
+            return ((temp - 32)*5/9).toFixed(1);
+        } 
+    };
 
 }]);
 
@@ -146,6 +165,13 @@ myApp.service("getHourly", ["$http","plotHourly", function($http, plotHourly) {
             });
         }
     };
+}]);
+
+myApp.service("displayTemperature", [function(temp){
+    this.convert = function(temp) {
+        return "5.0"; 
+    };
+   
 }]);
 
 myApp.service("plotHourly", [function(){
