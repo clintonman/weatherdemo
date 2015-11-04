@@ -74,9 +74,14 @@ div.othertemps {
     padding-bottom: 10px;
     margin: 0;
     padding-left: 10px;
+    background-image: url("../images/clouds.jpg");
+    background-size:cover;
+    color:#ddd;
 }
 .jumbotron small {
     font-size: 0.5em;
+    color:#ee9;
+    text-shadow:1px 1px 3px #333;
 }
 .searchcontainer {
     overflow: visible;
