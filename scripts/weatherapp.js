@@ -1,6 +1,79 @@
-var myApp = angular.module('weatherApp', []);
+(function(){
+    angular.module('weatherApp', []);
+    
+    angular.module('weatherApp').controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent","displayTemperature", function($scope, $http, getCityList, getCurrent, displayTemperature) {
+    this.section = "1st app compare temperature forecast in 2 locations";
+    this.searches = [{
+            "search": "",
+            "searchresult": []
+                     },
+        {
+            "search": "",
+            "searchresult": []
+        }];
+    this.currentdata = {};
+    this.currentdata.city = [{"name": "city1"},{"name":"city2"}];
+    this.currentdata.high = [{"temp":100},{"temp":100}];
+    this.currentdata.low = [{"temp":0},{"temp":0}];
+    this.currentdata.now = [{"temp":150.5},{"temp":150.5}];
+    this.currentdata.feel = [{"temp":50},{"temp":50}];
+    this.currentdata.graphic = [{"icon":""},
+                                {"icon":""}];
+                                     
+    this.hourlytemp = [[],[]];
+    this.starthour = 0;
+                                     
+    this.points = "20,100 40,60 70,80 100,20";
+    this.temperatures = ["0,0 1,1","0,0 1,1"];
+    
+    this.englishunits = true;
+    this.tempunits = "F";
+                                     
 
-myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent","displayTemperature", function($scope, $http, getCityList, getCurrent, displayTemperature) {
+    this.updatesearch = function(index) {
+        getCityList.getitems(this, index);
+    };
+    
+    this.setcity = function(cityindex, listindex, thecity) {
+        if(thecity.length > 26) {
+            thecity = thecity.substr(0,26);
+        }
+        this.currentdata.city[cityindex].name = thecity;
+        var location = this.searches[cityindex].searchresult[listindex].l;
+        
+        //might be locid instead of zmw - somehitg like /q/locid:RPPG0002;loctype:1 - probably ok
+        var url = "http://api.wunderground.com/api/MY_KEY_HERE/conditions" 
+                + location
+                + "?callback=JSON_CALLBACK.json";
+        
+        console.log(url);
+        
+        //clear the search data
+        this.searches[cityindex].search = "";
+        this.searches[cityindex].searchresult = [];
+
+        getCurrent.getitems(this, cityindex);
+    }
+    this.toggleunits = function(){
+        if(this.englishunits) {
+            this.englishunits = false;
+            this.tempunits = "C";
+        } else {
+            this.englishunits = true;
+            this.tempunits = "F";
+        }
+    };
+    this.convert = function(temp) {
+        if(this.englishunits) {
+            return (temp*1).toFixed(1);
+        } else {
+            return ((temp - 32)*5/9).toFixed(1);
+        } 
+    };
+
+}]);
+    
+    angular.module('weatherApp').controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent","displayTemperature", function($scope, $http, getCityList, getCurrent, displayTemperature) {
     this.section = "1st app compare temperature forecast in 2 locations";
     this.searches = [{
             "search": "",
@@ -72,7 +145,7 @@ myApp.controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent","
 
 }]);
 
-myApp.service("getCurrent", ["$http", "getForecast", function($http, getForecast) {
+angular.module('weatherApp').service("getCurrent", ["$http", "getForecast", function($http, getForecast) {
     //testing 0 = palos, 1 = trabuco
     this.getitems = function(self, index) {
         var OK = 200;
@@ -106,7 +179,7 @@ myApp.service("getCurrent", ["$http", "getForecast", function($http, getForecast
     };
 }]);
 
-myApp.service("getForecast", ["$http", "getHourly", function($http, getHourly) {
+angular.module('weatherApp').service("getForecast", ["$http", "getHourly", function($http, getHourly) {
     this.getitems = function(self, index) {
         var OK = 200;
         if(index==0) {
@@ -136,7 +209,7 @@ myApp.service("getForecast", ["$http", "getHourly", function($http, getHourly) {
     };
 }]);
 
-myApp.service("getHourly", ["$http","plotHourly", function($http, plotHourly) {
+angular.module('weatherApp').service("getHourly", ["$http","plotHourly", function($http, plotHourly) {
     this.getitems = function(self, index) {
         //console.log("hourly is next");
         var OK = 200;
@@ -167,14 +240,14 @@ myApp.service("getHourly", ["$http","plotHourly", function($http, plotHourly) {
     };
 }]);
 
-myApp.service("displayTemperature", [function(temp){
+angular.module('weatherApp').service("displayTemperature", [function(temp){
     this.convert = function(temp) {
         return "5.0"; 
     };
    
 }]);
 
-myApp.service("plotHourly", [function(){
+angular.module('weatherApp').service("plotHourly", [function(){
     this.plot = function(self) {
         if(self.hourlytemp[0].length > 0 && self.hourlytemp[1].length > 0) {
         //    alert("plot values");
@@ -200,7 +273,7 @@ myApp.service("plotHourly", [function(){
 }]);
 
 //get the weather underground autocomplete api list of city names and locations
-myApp.service("getCityList", ["$http", function($http) {
+angular.module('weatherApp').service("getCityList", ["$http", function($http) {
     this.getitems = function(self, index) {
 
         var searchfield = self.searches[index].search;
@@ -234,3 +307,5 @@ myApp.service("getCityList", ["$http", function($http) {
     };
 
 }]);
+})();
+
