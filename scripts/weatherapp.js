@@ -2,6 +2,7 @@
     angular.module('weatherApp', []);
     
     angular.module('weatherApp').controller("weatherCtrl", ["$scope", "$http", "getCityList","getCurrent","displayTemperature", function($scope, $http, getCityList, getCurrent, displayTemperature) {
+        self = this;
     this.section = "1st app compare temperature forecast in 2 locations";
     this.searches = [{
             "search": "",
@@ -28,6 +29,7 @@
     
     this.englishunits = true;
     this.tempunits = "F";
+        this.cityLocationUrl = "";
                                      
 
     this.updatesearch = function(index) {
@@ -41,12 +43,14 @@
         this.currentdata.city[cityindex].name = thecity;
         var location = this.searches[cityindex].searchresult[listindex].l;
         
-        //might be locid instead of zmw - somehitg like /q/locid:RPPG0002;loctype:1 - probably ok
-        var url = "http://api.wunderground.com/api/MY_KEY_HERE/conditions" 
-                + location
-                + "?callback=JSON_CALLBACK.json";
+        self.cityLocationUrl = location;
         
-        console.log(url);
+        //might be locid instead of zmw - somehitg like /q/locid:RPPG0002;loctype:1 - probably ok
+        //var url = "http://api.wunderground.com/api/MY_KEY_HERE/conditions" 
+        //        + this.cityLocationUrl
+        //        + "?callback=JSON_CALLBACK.json";
+        
+        //console.log(url);
         
         //clear the search data
         this.searches[cityindex].search = "";

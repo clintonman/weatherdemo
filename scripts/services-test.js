@@ -3,19 +3,9 @@ angular.module('weatherApp').service("getCurrent", ["$http", "getForecast", func
     //testing 0 = palos, 1 = trabuco
     this.getitems = function(self, index) {
         var OK = 200;
-        var url = "http://api.wunderground.com/api/28fba46505b93796/conditions" 
-                + self.cityLocationUrl
-                + ".json?callback=JSON_CALLBACK";
-
-        console.log(url);
-        
-        var myhttp = $http({
-            "method": "JSONP",
-            "url": url
-        });
-        
         if(index==0) {
-            myhttp.then(function (response) {
+            $http.get("palosCurrent.json")
+                .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.current_observation;
                         //console.log(currentData);
@@ -27,7 +17,8 @@ angular.module('weatherApp').service("getCurrent", ["$http", "getForecast", func
             });
         }
         if(index==1) {
-            myhttp.then(function (response) {
+            $http.get("trabucoCurrent.json")
+                .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.current_observation;
                         //console.log(currentData);
@@ -45,18 +36,9 @@ angular.module('weatherApp').service("getCurrent", ["$http", "getForecast", func
 angular.module('weatherApp').service("getForecast", ["$http", "getHourly", function($http, getHourly) {
     this.getitems = function(self, index) {
         var OK = 200;
-        var url = "http://api.wunderground.com/api/28fba46505b93796/forecast" 
-                + self.cityLocationUrl
-                + ".json?callback=JSON_CALLBACK";
-
-        console.log(url);
-        
-        var myhttp = $http({
-            "method": "JSONP",
-            "url": url
-        });
         if(index==0) {
-            myhttp.then(function (response) {
+            $http.get("palosForecast.json")
+                .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.forecast.simpleforecast.forecastday[0];
                         //console.log(currentData);
@@ -67,7 +49,8 @@ angular.module('weatherApp').service("getForecast", ["$http", "getHourly", funct
             });
         }
         if(index==1) {
-            myhttp.then(function (response) {
+            $http.get("trabucoForecast.json")
+                .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.forecast.simpleforecast.forecastday[0];
                         //console.log(currentData);
@@ -84,18 +67,9 @@ angular.module('weatherApp').service("getHourly", ["$http","plotHourly", functio
     this.getitems = function(self, index) {
         //console.log("hourly is next");
         var OK = 200;
-        var url = "http://api.wunderground.com/api/28fba46505b93796/hourly" 
-                + self.cityLocationUrl
-                + ".json?callback=JSON_CALLBACK";
-
-        console.log(url);
-        
-        var myhttp = $http({
-            "method": "JSONP",
-            "url": url
-        });
         if(index==0) {
-            myhttp.then(function (response) {
+            $http.get("palosHourly.json")
+                .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.hourly_forecast;
                         //console.log(currentData);
@@ -106,7 +80,8 @@ angular.module('weatherApp').service("getHourly", ["$http","plotHourly", functio
             });
         }
         if(index==1) {
-            myhttp.then(function (response) {
+            $http.get("trabucoHourly.json")
+                .then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.hourly_forecast;
                         //console.log(currentData);
