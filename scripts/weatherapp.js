@@ -22,6 +22,10 @@
                                 {"icon":""}];
                                      
     this.hourlytemp = [[],[]];
+        this.minhourly = 200;
+        this.maxhourly = -200;
+        this.minplot = 200;
+        this.maxplot = -200;
     this.starthour = 0;
                                      
     this.points = "20,100 40,60 70,80 100,20";

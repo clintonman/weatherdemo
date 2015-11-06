@@ -130,11 +130,36 @@ angular.module('weatherApp').service("plotHourly", [function(){
     this.plot = function(self) {
         if(self.hourlytemp[0].length > 0 && self.hourlytemp[1].length > 0) {
         //    alert("plot values");
+            
+            for(var i =0; i < 24; i++) {
+                if(self.hourlytemp[0][i].temp.english < self.minhourly) {
+                    self.minhourly = self.hourlytemp[0][i].temp.english;
+                }
+                if(self.hourlytemp[0][i].temp.english > self.maxhourly) {
+                    self.maxhourly = self.hourlytemp[0][i].temp.english;
+                }
+                if(self.hourlytemp[1][i].temp.english < self.minhourly) {
+                    self.minhourly = self.hourlytemp[1][i].temp.english;
+                }
+                if(self.hourlytemp[1][i].temp.english > self.maxhourly) {
+                    self.maxhourly = self.hourlytemp[1][i].temp.english;
+                }
+            }
+            
 
             var high = Math.max(self.currentdata.high[0].temp, self.currentdata.high[1].temp);
             var low = Math.min(self.currentdata.low[0].temp, self.currentdata.low[1].temp);
+            
+            high = Math.max(high, self.maxhourly);
+            low = Math.min(low, self.minhourly);
+            
+            self.maxplot = high;
+            self.minplot = low;
+            
             self.temperatures[0] = getTemperaturePoints(self.hourlytemp[0],high,low);
             self.temperatures[1] = getTemperaturePoints(self.hourlytemp[1],high,low);
+            
+            
         }
     };
     
@@ -146,6 +171,7 @@ angular.module('weatherApp').service("plotHourly", [function(){
             for(var i =0; i < 24; i++) {
                 var scaledTemperature = 150 - (arr[i].temp.english - low) * 150 / range;
                 graphpoints += i*400/23 +',' + scaledTemperature + ' ';
+                
             }
             return graphpoints;
         }

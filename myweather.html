@@ -98,9 +98,15 @@
             <svg>
                 <polyline id="plotcity1" ng-attr-points="{{wdata.temperatures[0]}}" stroke="#0ff" stroke-width="2" fill="none" />
                 <polyline id="plotcity2" ng-attr-points="{{wdata.temperatures[1]}}" stroke="#0f0" stroke-width="2" fill="none" />
+                <line id="lowcity1" x1="0" y1="125" x2="4000" y2="125" stroke="#00f" stroke-width="1"/>
+                <line id="highcity1" x1="0" y1="25" x2="4000" y2="25" stroke="#f00" stroke-width="1"/>
+                <line id="lowcity2" x1="0" y1="130" x2="4000" y2="130" stroke="#00f" stroke-width="1"/>
+                <line id="highcity2" x1="0" y1="35" x2="4000" y2="35" stroke="#f00" stroke-width="1"/>
             </svg>
         </svg>
         <h3>start hour: {{wdata.starthour}}:00</h3>
+        <p>{{wdata.maxhourly}}</p>
+        <p>{{wdata.minhourly}}</p>
     </div>
 </body>
 
