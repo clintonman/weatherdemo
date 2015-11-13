@@ -14,8 +14,8 @@
         }];
     this.currentdata = {};
     this.currentdata.city = [{"name": "city1"},{"name":"city2"}];
-    this.currentdata.high = [{"temp":100},{"temp":100}];
-    this.currentdata.low = [{"temp":0},{"temp":0}];
+    this.currentdata.high = [{"temp":100, "plot":30},{"temp":100, "plot":30}];
+    this.currentdata.low = [{"temp":0, "plot":130},{"temp":0, "plot":130}];
     this.currentdata.now = [{"temp":150.5},{"temp":150.5}];
     this.currentdata.feel = [{"temp":50},{"temp":50}];
     this.currentdata.graphic = [{"icon":""},
@@ -26,10 +26,10 @@
         this.maxhourly = -200;
         this.minplot = 200;
         this.maxplot = -200;
-    this.starthour = 0;
+    this.starthours = [0, 0];
                                      
     this.points = "20,100 40,60 70,80 100,20";
-    this.temperatures = ["0,0 1,1","0,0 1,1"];
+    this.temperatures = ["30,10 31,11","30,10 31,11"];
     
     this.englishunits = true;
     this.tempunits = "F";

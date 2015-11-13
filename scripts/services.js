@@ -99,7 +99,7 @@ angular.module('weatherApp').service("getHourly", ["$http","plotHourly", functio
                     if (response.status == OK) {
                         var currentData = response.data.hourly_forecast;
                         //console.log(currentData);
-                        self.starthour = currentData[0].FCTTIME.hour;
+                        self.starthours[0] = currentData[0].FCTTIME.hour;
                         self.hourlytemp[index] = currentData;
                         plotHourly.plot(self);
                     }
@@ -110,7 +110,7 @@ angular.module('weatherApp').service("getHourly", ["$http","plotHourly", functio
                     if (response.status == OK) {
                         var currentData = response.data.hourly_forecast;
                         //console.log(currentData);
-                        self.starthour = currentData[0].FCTTIME.hour;
+                        self.starthours[1] = currentData[0].FCTTIME.hour;
                         self.hourlytemp[index] = currentData;
                         plotHourly.plot(self);
                     }
@@ -159,18 +159,26 @@ angular.module('weatherApp').service("plotHourly", [function(){
             self.temperatures[0] = getTemperaturePoints(self.hourlytemp[0],high,low);
             self.temperatures[1] = getTemperaturePoints(self.hourlytemp[1],high,low);
             
-            
+            var offsetY = 10;
+            var range = high - low;
+            self.currentdata.high[0].plot = 150 - (self.currentdata.high[0].temp - low) * 150 / range + offsetY;
+            self.currentdata.high[1].plot = 150 - (self.currentdata.high[1].temp - low) * 150 / range + offsetY;
+            self.currentdata.low[0].plot = 150 - (self.currentdata.low[0].temp - low) * 150 / range + offsetY;
+            self.currentdata.low[1].plot = 150 - (self.currentdata.low[1].temp - low) * 150 / range + offsetY;
+
         }
     };
     
     function getTemperaturePoints(arr, high, low) {
         //console.log(arr);
         //return;
+        var offsetY = 10;
+        var offsetX = 30;
         var range = high - low;
             var graphpoints = "";
             for(var i =0; i < 24; i++) {
-                var scaledTemperature = 150 - (arr[i].temp.english - low) * 150 / range;
-                graphpoints += i*400/23 +',' + scaledTemperature + ' ';
+                var scaledTemperature = 150 - (arr[i].temp.english - low) * 150 / range + offsetY;
+                graphpoints += (i*400/23+offsetX) +',' + scaledTemperature + ' ';
                 
             }
             return graphpoints;

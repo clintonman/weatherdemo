@@ -6,16 +6,16 @@ sup {
     font-size: 0.4em;
 }
 .graphcity1 {
-    border: 2px solid cyan;
-    background-color: #dff;
+    border: 2px solid #ba44da;
+    background-color: #f1e8fa;
 }
 .graphcity1a {
     background-color: #dff;
     padding: 20px;
 }
 .graphcity2 {
-    border: 2px solid #0f0;
-    background-color: #dfd;
+    border: 2px solid #02ff01;
+    background-color: #deffdd;
 }
 .high {
     color: #a00;
