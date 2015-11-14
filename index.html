@@ -86,7 +86,8 @@
         <button class="btn btn-block btn-primary btn-sm" ng-click="wdata.toggleunits()">Temperatures in &deg;{{wdata.tempunits}} - press to change units</button>
         
         <div ng-include="'plot.svg'"></div>
-        <img style="max-width:107px;" src="images/wundergroundLogo_4c.svg"/>
+        <div class="col-xs-8 col-sm-9 text-right"><small>Powered by Weather Underground</small></div>
+        <a href="http://www.wunderground.com" target="_blank"><img class="col-xs-4 col-sm-3  img-responsive wulogo" src="images/wundergroundLogo_4c_horz.svg"/></a>
     </div>
     
 </body>

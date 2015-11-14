@@ -96,6 +96,9 @@ div.othertemps {
     z-index: 5;
     overflow: visible;
 }
+.wulogo {
+    min-width:90px;background-color:#fff;padding:5px;
+}
 /* 768px from bootstrap website */
 @media (min-width: 768px) {
     .currenttemp {
