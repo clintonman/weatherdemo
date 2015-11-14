@@ -1,13 +1,10 @@
 (function(){
 angular.module('weatherApp').service("getCurrent", ["$http", "getForecast", function($http, getForecast) {
-    //testing 0 = palos, 1 = trabuco
     this.getitems = function(self, index) {
         var OK = 200;
         var url = "http://api.wunderground.com/api/28fba46505b93796/conditions" 
                 + self.cityLocationUrl
                 + ".json?callback=JSON_CALLBACK";
-
-        console.log(url);
         
         var myhttp = $http({
             "method": "JSONP",
@@ -18,7 +15,6 @@ angular.module('weatherApp').service("getCurrent", ["$http", "getForecast", func
             myhttp.then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.current_observation;
-                        //console.log(currentData);
                         self.currentdata.now[index].temp = currentData.temp_f;
                         self.currentdata.feel[index].temp = currentData.feelslike_f;
                         self.currentdata.graphic[index].icon = currentData.icon_url;
@@ -30,11 +26,9 @@ angular.module('weatherApp').service("getCurrent", ["$http", "getForecast", func
             myhttp.then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.current_observation;
-                        //console.log(currentData);
                         self.currentdata.now[index].temp = currentData.temp_f;
                         self.currentdata.feel[index].temp = currentData.feelslike_f;
                         self.currentdata.graphic[index].icon = currentData.icon_url;
-                        //console.log(self.currentdata.graphic[index].icon);
                         getForecast.getitems(self, index);
                     }
             });
@@ -48,8 +42,6 @@ angular.module('weatherApp').service("getForecast", ["$http", "getHourly", funct
         var url = "http://api.wunderground.com/api/28fba46505b93796/forecast" 
                 + self.cityLocationUrl
                 + ".json?callback=JSON_CALLBACK";
-
-        console.log(url);
         
         var myhttp = $http({
             "method": "JSONP",
@@ -59,7 +51,6 @@ angular.module('weatherApp').service("getForecast", ["$http", "getHourly", funct
             myhttp.then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.forecast.simpleforecast.forecastday[0];
-                        //console.log(currentData);
                         self.currentdata.high[index].temp = currentData.high.fahrenheit;
                         self.currentdata.low[index].temp = currentData.low.fahrenheit;
                         getHourly.getitems(self, index);
@@ -70,7 +61,6 @@ angular.module('weatherApp').service("getForecast", ["$http", "getHourly", funct
             myhttp.then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.forecast.simpleforecast.forecastday[0];
-                        //console.log(currentData);
                         self.currentdata.high[index].temp = currentData.high.fahrenheit;
                         self.currentdata.low[index].temp = currentData.low.fahrenheit;
                         getHourly.getitems(self, index);
@@ -82,7 +72,6 @@ angular.module('weatherApp').service("getForecast", ["$http", "getHourly", funct
 
 angular.module('weatherApp').service("getHourly", ["$http","plotHourly", function($http, plotHourly) {
     this.getitems = function(self, index) {
-        //console.log("hourly is next");
         var OK = 200;
         var url = "http://api.wunderground.com/api/28fba46505b93796/hourly" 
                 + self.cityLocationUrl
@@ -98,7 +87,6 @@ angular.module('weatherApp').service("getHourly", ["$http","plotHourly", functio
             myhttp.then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.hourly_forecast;
-                        //console.log(currentData);
                         self.starthours[0] = currentData[0].FCTTIME.hour;
                         self.hourlytemp[index] = currentData;
                         plotHourly.plot(self);
@@ -109,7 +97,6 @@ angular.module('weatherApp').service("getHourly", ["$http","plotHourly", functio
             myhttp.then(function (response) {
                     if (response.status == OK) {
                         var currentData = response.data.hourly_forecast;
-                        //console.log(currentData);
                         self.starthours[1] = currentData[0].FCTTIME.hour;
                         self.hourlytemp[index] = currentData;
                         plotHourly.plot(self);
@@ -123,14 +110,11 @@ angular.module('weatherApp').service("displayTemperature", [function(temp){
     this.convert = function(temp) {
         return "5.0"; 
     };
-   
 }]);
 
 angular.module('weatherApp').service("plotHourly", [function(){
     this.plot = function(self) {
-        if(self.hourlytemp[0].length > 0 && self.hourlytemp[1].length > 0) {
-        //    alert("plot values");
-            
+        if(self.hourlytemp[0].length > 0 && self.hourlytemp[1].length > 0) {            
             for(var i =0; i < 24; i++) {
                 if(self.hourlytemp[0][i].temp.english < self.minhourly) {
                     self.minhourly = self.hourlytemp[0][i].temp.english;
@@ -170,19 +154,16 @@ angular.module('weatherApp').service("plotHourly", [function(){
     };
     
     function getTemperaturePoints(arr, high, low) {
-        //console.log(arr);
-        //return;
         var offsetY = 10;
         var offsetX = 30;
         var range = high - low;
-            var graphpoints = "";
-            for(var i =0; i < 24; i++) {
-                var scaledTemperature = 150 - (arr[i].temp.english - low) * 150 / range + offsetY;
-                graphpoints += (i*400/23+offsetX) +',' + scaledTemperature + ' ';
-                
-            }
-            return graphpoints;
+        var graphpoints = "";
+        for(var i =0; i < 24; i++) {
+            var scaledTemperature = 150 - (arr[i].temp.english - low) * 150 / range + offsetY;
+            graphpoints += (i*400/23+offsetX) +',' + scaledTemperature + ' ';
         }
+        return graphpoints;
+    }
 }]);
 
 //get the weather underground autocomplete api list of city names and locations
@@ -191,7 +172,6 @@ angular.module('weatherApp').service("getCityList", ["$http", function($http) {
 
         var searchfield = self.searches[index].search;
 
-        //if (!searchfield || searchfield.length < 3) {
         if (!searchfield) {
             self.searches[index].searchresult = [];
             return;
